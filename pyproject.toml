@@ -1,0 +1,9 @@
+[project]
+name = "spark-cluster-mode-demos"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.7"
+dependencies = [
+    "pyarrow<=8",
+    "pyspark<4",
+]
