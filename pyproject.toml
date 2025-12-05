@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.7"
 dependencies = [
+    "more-itertools>=9.1.0",
     "pyarrow<=8",
     "pyspark<4",
 ]
