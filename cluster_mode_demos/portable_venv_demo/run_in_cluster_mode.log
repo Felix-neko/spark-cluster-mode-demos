@@ -1,0 +1,275 @@
+/usr/bin/env bash /home/felix/Projects/spark-cluster-mode-demos/cluster_mode_demos/portable_venv_demo/run_in_cluster_mode.sh
+=== Запуск Spark-приложения в cluster-режиме ===
+Application Name: portable-venv-demo-1765033122
+HADOOP_CONF_DIR: /home/felix/Projects/spark-cluster-mode-demos/cluster_mode_demos/portable_venv_demo/hadoop_configs/quickstart-bigdata
+
+25/12/06 17:58:43 WARN Utils: Your hostname, gigant resolves to a loopback address: 127.0.1.1; using 192.168.1.66 instead (on interface enp34s0)
+25/12/06 17:58:43 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+25/12/06 17:58:43 INFO deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
+25/12/06 17:58:43 INFO DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at quickstart-bigdata/192.168.116.132:8032
+25/12/06 17:58:44 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/06 17:58:44 INFO Configuration: resource-types.xml not found
+25/12/06 17:58:44 INFO ResourceUtils: Unable to find 'resource-types.xml'.
+25/12/06 17:58:44 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (4096 MB per container)
+25/12/06 17:58:44 INFO Client: Will allocate AM container, with 1408 MB memory including 384 MB overhead
+25/12/06 17:58:44 INFO Client: Setting up container launch context for our AM
+25/12/06 17:58:44 INFO Client: Setting up the launch environment for our AM container
+25/12/06 17:58:44 INFO Client: Preparing resources for our AM container
+25/12/06 17:58:44 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+25/12/06 17:58:45 INFO Client: Uploading resource file:/tmp/spark-8a8a724f-e00a-4150-b1ab-b969c16f014a/__spark_libs__5709186954347272856.zip -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030/__spark_libs__5709186954347272856.zip
+25/12/06 17:58:47 INFO Client: Uploading resource file:/home/felix/Projects/spark-cluster-mode-demos/cluster_mode_demos/portable_venv_demo/cluster_entrypoint.py -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030/cluster_entrypoint.py
+25/12/06 17:58:47 INFO Client: Uploading resource file:/home/felix/Projects/spark-cluster-mode-demos/.venv/lib/python3.7/site-packages/pyspark/python/lib/pyspark.zip -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030/pyspark.zip
+25/12/06 17:58:47 INFO Client: Uploading resource file:/home/felix/Projects/spark-cluster-mode-demos/.venv/lib/python3.7/site-packages/pyspark/python/lib/py4j-0.10.9.7-src.zip -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030/py4j-0.10.9.7-src.zip
+25/12/06 17:58:47 INFO Client: Uploading resource file:/home/felix/Projects/spark-cluster-mode-demos/cluster_mode_demos/portable_venv_demo/etl_repo.zip -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030/etl_repo.zip
+25/12/06 17:58:47 INFO Client: Uploading resource file:/tmp/spark-8a8a724f-e00a-4150-b1ab-b969c16f014a/__spark_conf__3901397130066236723.zip -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030/__spark_conf__.zip
+25/12/06 17:58:47 INFO SecurityManager: Changing view acls to: felix,osboxes
+25/12/06 17:58:47 INFO SecurityManager: Changing modify acls to: felix,osboxes
+25/12/06 17:58:47 INFO SecurityManager: Changing view acls groups to:
+25/12/06 17:58:47 INFO SecurityManager: Changing modify acls groups to:
+25/12/06 17:58:47 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: felix, osboxes; groups with view permissions: EMPTY; users with modify permissions: felix, osboxes; groups with modify permissions: EMPTY
+25/12/06 17:58:47 INFO Client: Submitting application application_1758807932720_0030 to ResourceManager
+25/12/06 17:58:47 INFO YarnClientImpl: Submitted application application_1758807932720_0030
+25/12/06 17:58:48 INFO Client: Application report for application_1758807932720_0030 (state: ACCEPTED)
+25/12/06 17:58:48 INFO Client:
+         client token: N/A
+         diagnostics: AM container is launched, waiting for AM container to Register with RM
+         ApplicationMaster host: N/A
+         ApplicationMaster RPC port: -1
+         queue: root.users.osboxes
+         start time: 1765033127518
+         final status: UNDEFINED
+         tracking URL: http://quickstart-bigdata:8088/proxy/application_1758807932720_0030/
+         user: osboxes
+25/12/06 17:58:49 INFO Client: Application report for application_1758807932720_0030 (state: ACCEPTED)
+25/12/06 17:58:50 INFO Client: Application report for application_1758807932720_0030 (state: ACCEPTED)
+25/12/06 17:58:51 INFO Client: Application report for application_1758807932720_0030 (state: ACCEPTED)
+25/12/06 17:58:52 INFO Client: Application report for application_1758807932720_0030 (state: ACCEPTED)
+25/12/06 17:58:53 INFO Client: Application report for application_1758807932720_0030 (state: ACCEPTED)
+25/12/06 17:58:54 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:58:54 INFO Client:
+         client token: N/A
+         diagnostics: N/A
+         ApplicationMaster host: quickstart-bigdata
+         ApplicationMaster RPC port: 46260
+         queue: root.users.osboxes
+         start time: 1765033127518
+         final status: UNDEFINED
+         tracking URL: http://quickstart-bigdata:8088/proxy/application_1758807932720_0030/
+         user: osboxes
+25/12/06 17:58:55 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:58:56 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:58:57 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:58:58 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:58:59 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:00 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:01 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:02 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:03 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:04 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:05 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:06 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:07 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:08 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:09 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:10 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:11 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:12 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:13 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:14 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:15 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:16 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:17 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:18 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:19 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:20 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:21 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:22 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:23 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:24 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:25 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:26 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:27 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:28 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:29 INFO Client: Application report for application_1758807932720_0030 (state: RUNNING)
+25/12/06 17:59:30 INFO Client: Application report for application_1758807932720_0030 (state: FINISHED)
+25/12/06 17:59:30 INFO Client:
+         client token: N/A
+         diagnostics: N/A
+         ApplicationMaster host: quickstart-bigdata
+         ApplicationMaster RPC port: 46260
+         queue: root.users.osboxes
+         start time: 1765033127518
+         final status: SUCCEEDED
+         tracking URL: http://quickstart-bigdata:8088/proxy/application_1758807932720_0030/
+         user: osboxes
+25/12/06 17:59:30 INFO ShutdownHookManager: Shutdown hook called
+25/12/06 17:59:30 INFO ShutdownHookManager: Deleting directory /tmp/spark-8a8a724f-e00a-4150-b1ab-b969c16f014a
+25/12/06 17:59:30 INFO ShutdownHookManager: Deleting directory /tmp/spark-7c056b4f-f89b-460d-ab9f-af9846ed654f
+
+=== Приложение завершено с кодом: 0 ===
+Application ID: application_1758807932720_0030
+Логи сохранены в: /tmp/spark-submit-portable-venv-demo-1765033122.log
+
+=== Получение логов драйвера из YARN ===
+Получение stdout драйвера...
+osboxes@quickstart-bigdata's password:
+End of LogType:stdout
+***********************************************************************
+
+
+End of LogType:prelaunch.err
+******************************************************************************
+
+Container: container_1758807932720_0030_01_000001 on quickstart-bigdata_8041
+LogAggregationType: AGGREGATED
+============================================================================
+LogType:prelaunch.out
+LogLastModifiedTime:Sat Dec 06 20:29:31 +0530 2025
+LogLength:70
+LogContents:
+Setting up env variables
+Setting up job resources
+Launching container
+
+End of LogType:prelaunch.out
+******************************************************************************
+
+Container: container_1758807932720_0030_01_000001 on quickstart-bigdata_8041
+LogAggregationType: AGGREGATED
+============================================================================
+LogType:stderr
+LogLastModifiedTime:Sat Dec 06 20:29:31 +0530 2025
+LogLength:28189
+LogContents:
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+25/12/06 20:28:50 INFO SignalUtils: Registering signal handler for TERM
+25/12/06 20:28:50 INFO SignalUtils: Registering signal handler for HUP
+25/12/06 20:28:50 INFO SignalUtils: Registering signal handler for INT
+25/12/06 20:28:51 INFO ApplicationMaster: ApplicationAttemptId: appattempt_1758807932720_0030_000001
+25/12/06 20:28:51 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/12/06 20:28:51 INFO ApplicationMaster: Starting the user application in a separate Thread
+25/12/06 20:28:51 INFO ApplicationMaster: Waiting for spark context initialization...
+25/12/06 20:28:52 INFO SparkContext: Running Spark version 3.4.4
+25/12/06 20:28:52 INFO ResourceUtils: ==============================================================
+25/12/06 20:28:52 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/12/06 20:28:52 INFO ResourceUtils: ==============================================================
+25/12/06 20:28:52 INFO SparkContext: Submitted application: Portable Venv Demo
+25/12/06 20:28:52 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/12/06 20:28:52 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+25/12/06 20:28:52 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/12/06 20:28:52 INFO SecurityManager: Changing view acls to: yarn,osboxes
+25/12/06 20:28:52 INFO SecurityManager: Changing modify acls to: yarn,osboxes
+25/12/06 20:28:52 INFO SecurityManager: Changing view acls groups to:
+25/12/06 20:28:52 INFO SecurityManager: Changing modify acls groups to:
+25/12/06 20:28:52 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: yarn, osboxes; groups with view permissions: EMPTY; users with modify permissions: yarn, osboxes; groups with modify permissions: EMPTY
+25/12/06 20:28:52 INFO deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
+25/12/06 20:28:52 INFO Utils: Successfully started service 'sparkDriver' on port 46260.
+25/12/06 20:28:52 INFO SparkEnv: Registering MapOutputTracker
+25/12/06 20:28:52 INFO SparkEnv: Registering BlockManagerMaster
+25/12/06 20:28:52 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/12/06 20:28:52 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/12/06 20:28:52 INFO deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
+25/12/06 20:28:52 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/12/06 20:28:52 INFO DiskBlockManager: Created local directory at /yarn/nm/usercache/osboxes/appcache/application_1758807932720_0030/blockmgr-1f08bd44-2405-4de0-a9df-235522782982
+25/12/06 20:28:52 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+25/12/06 20:28:52 INFO deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
+25/12/06 20:28:52 INFO SparkEnv: Registering OutputCommitCoordinator
+25/12/06 20:28:52 INFO JettyUtils: Start Jetty 0.0.0.0:0 for SparkUI
+25/12/06 20:28:52 INFO Utils: Successfully started service 'SparkUI' on port 45762.
+25/12/06 20:28:52 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:52 INFO deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
+25/12/06 20:28:52 INFO YarnClusterScheduler: Created YarnClusterScheduler
+25/12/06 20:28:52 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41064.
+25/12/06 20:28:52 INFO NettyBlockTransferService: Server created on quickstart-bigdata:41064
+25/12/06 20:28:52 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/12/06 20:28:52 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, quickstart-bigdata, 41064, None)
+25/12/06 20:28:52 INFO BlockManagerMasterEndpoint: Registering block manager quickstart-bigdata:41064 with 366.3 MiB RAM, BlockManagerId(driver, quickstart-bigdata, 41064, None)
+25/12/06 20:28:52 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, quickstart-bigdata, 41064, None)
+25/12/06 20:28:52 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, quickstart-bigdata, 41064, None)
+25/12/06 20:28:53 INFO SingleEventLogFileWriter: Logging events to hdfs://quickstart-bigdata:8020/user/spark/applicationHistory/application_1758807932720_0030_1.inprogress
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /jobs: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /jobs/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /jobs/job: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /jobs/job/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages/stage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages/stage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages/pool: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages/pool/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /storage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /storage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /storage/rdd: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /storage/rdd/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /environment: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /environment/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /executors: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /executors/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /executors/threadDump: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /executors/threadDump/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /static: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /api: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /jobs/job/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /stages/stage/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO ServerInfo: Adding filter to /metrics/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/12/06 20:28:53 INFO DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at quickstart-bigdata/192.168.116.132:8030
+25/12/06 20:28:53 INFO YarnRMClient: Registering the ApplicationMaster
+25/12/06 20:28:53 INFO ApplicationMaster: Preparing Local resources
+25/12/06 20:28:53 INFO SecurityManager: Changing view acls to: yarn,osboxes
+25/12/06 20:28:53 INFO SecurityManager: Changing modify acls to: yarn,osboxes
+25/12/06 20:28:53 INFO SecurityManager: Changing view acls groups to:
+25/12/06 20:28:53 INFO SecurityManager: Changing modify acls groups to:
+25/12/06 20:28:53 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: yarn, osboxes; groups with view permissions: EMPTY; users with modify permissions: yarn, osboxes; groups with modify permissions: EMPTY
+25/12/06 20:28:53 INFO deprecation: mapred.reduce.tasks is deprecated. Instead, use mapreduce.job.reduces
+25/12/06 20:28:53 INFO ApplicationMaster:
+===============================================================================
+Default YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark_conf__<CPS>{{PWD}}/__spark_libs__/*<CPS>{{PWD}}/__spark_conf__/__hadoop_conf__
+    SPARK_YARN_STAGING_DIR -> hdfs://quickstart-bigdata:8020/user/osboxes/.sparkStaging/application_1758807932720_0030
+    SPARK_USER -> osboxes
+    PYTHONPATH -> {{PWD}}/pyspark.zip<CPS>{{PWD}}/py4j-0.10.9.7-src.zip<CPS>{{PWD}}/etl_repo.zip
+    SPARK_PREFER_IPV6 -> false
+
+  command:
+    {{JAVA_HOME}}/bin/java \
+      -server \
+      -Xmx1024m \
+      '-Djava.net.preferIPv6Addresses=false' \
+      '-XX:+IgnoreUnrecognizedVMOptions' \
+      '--add-opens=java.base/java.lang=ALL-UNNAMED' \
+      '--add-opens=java.base/java.lang.invoke=ALL-UNNAMED' \
+      '--add-opens=java.base/java.lang.reflect=ALL-UNNAMED' \
+      '--add-opens=java.base/java.io=ALL-UNNAMED' \
+      '--add-opens=java.base/java.net=ALL-UNNAMED' \
+      '--add-opens=java.base/java.nio=ALL-UNNAMED' \
+      '--add-opens=java.base/java.util=ALL-UNNAMED' \
+      '--add-opens=java.base/java.util.concurrent=ALL-UNNAMED' \
+      '--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED' \
+      '--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED' \
+      '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED' \
+      '--add-opens=java.base/sun.nio.cs=ALL-UNNAMED' \
+      '--add-opens=java.base/sun.security.action=ALL-UNNAMED' \
+      '--add-opens=java.base/sun.util.calendar=ALL-UNNAMED' \
+      '--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED' \
+      '-Djdk.reflect.useDirectMethodHandle=false' \
+      -Djava.io.tmpdir={{PWD}}/tmp \
+      '-Dspark.driver.port=46260' \
+      '-Dspark.ui.port=0' \
+      -Dspark.yarn.app.container.log.dir=<LOG_DIR> \
+      -XX:OnOutOfMemoryError='kill %p' \
+      org.apache.spark.executor.YarnCoarseGrainedExecutorBackend \
+      --driver-url \
+      spark://CoarseGrainedScheduler@quickstart-bigdata:46260 \
+      --executor-id \
+
+=== Ссылки для просмотра логов ===
+YARN Application UI: http://quickstart-bigdata:8088/cluster/app/application_1758807932720_0030
+Spark History Server: http://quickstart-bigdata:18088/history/application_1758807932720_0030/jobs/
+
+Для просмотра логов экзекутора откройте Spark History Server и перейдите в раздел 'Executors'
+
+Process finished with exit code 0
+
+
