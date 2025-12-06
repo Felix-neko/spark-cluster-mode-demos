@@ -178,7 +178,7 @@ def create_conda_pack_portable(
     env_name: str,
     requirements_file: Path,
     output_archive: Path,
-    python_version: str = "3.9"
+    python_version: str = "3.7"
 ) -> None:
     """
     Создать портабельное conda окружение с помощью conda-pack.

@@ -13,16 +13,16 @@ from pyspark.sql.functions import col, upper
 def get_spark_deployment_mode(spark):
     """
     Определить режим запуска PySpark: local, client, или cluster.
-    
+
     Returns:
         str: Один из 'local', 'client', 'cluster'
     """
     master = spark.sparkContext.master
-    
+
     # local[*] или local[n]
     if master.startswith("local"):
         return "local"
-    
+
     # yarn в client режиме
     if master == "yarn":
         # В YARN-client режиме SPARK_SUBMIT_DEPLOY_MODE=client
@@ -30,14 +30,14 @@ def get_spark_deployment_mode(spark):
         if deploy_mode == "cluster":
             return "cluster"
         return "client"
-    
+
     # spark://host:port
     if master.startswith("spark://"):
         deploy_mode = os.environ.get("SPARK_SUBMIT_DEPLOY_MODE", "client")
         if deploy_mode == "cluster":
             return "cluster"
         return "client"
-    
+
     return "unknown"
 
 
@@ -80,7 +80,7 @@ def setup_environment():
     # hadoop_conf_dir = project_root / "hadoop_configs" / "quickstart-bigdata"
     # os.environ["HADOOP_CONF_DIR"] = str(hadoop_conf_dir.resolve())
     # os.environ["PYSPARK_PYTHON"] = "/usr/local/bin/python3.7"
-    
+
     # Добавить проект в sys.path для импорта package_dir
     sys.path.insert(0, str(project_root))
 
@@ -99,7 +99,7 @@ def test_package_import():
     print("\n" + "="*60)
     print("ПРОВЕРКА 1: Импорт из package_dir на Driver")
     print("="*60)
-    
+
     try:
         from package_dir.subpackage_dir.utils import hello_world
         result = hello_world()
@@ -116,7 +116,7 @@ def test_more_itertools():
     print("\n" + "="*60)
     print("ПРОВЕРКА 2: Использование more_itertools на Driver")
     print("="*60)
-    
+
     try:
         from more_itertools import chunked
         data = list(range(10))
@@ -135,7 +135,7 @@ def test_executor_python_version(spark):
     print("\n" + "="*60)
     print("ПРОВЕРКА 3: Версии Python на Driver и Executor")
     print("="*60)
-    
+
     # Создаем простой RDD и проверяем информацию с executor
     test_rdd = spark.sparkContext.parallelize(range(1), 1)
     executor_info = test_rdd.mapPartitions(get_executor_python_info).collect()
@@ -223,38 +223,38 @@ def main():
     """Главная функция."""
     # Подготовка окружения
     setup_environment()
-    
+
     # Создание SparkSession
     spark = create_spark_session()
-    
+
     try:
         # Вывод информации о режиме запуска
         print_deployment_info(spark)
-        
+
         # Проверка подключения к Hive (если доступно)
         print("Проверка доступа к Hive:")
         spark.sql("SHOW DATABASES").show()
         print()
-        
+
         # ===== ТЕСТЫ =====
-        
+
         # Тест 1: Импорт пакета
         test_package_import()
-        
+
         # Тест 2: more_itertools
         test_more_itertools()
-        
+
         # Тест 3: Версии Python
         test_executor_python_version(spark)
-        
+
         # Тест 4: DataFrame операции
         test_dataframe_operations(spark)
-        
+
         # Финальная информация
         print("\n" + "="*60)
         print("✓ ВСЕ ПРОВЕРКИ ПРОЙДЕНЫ УСПЕШНО!")
         print("="*60 + "\n")
-        
+
     except Exception as e:
         print(f"\n{'='*60}")
         print(f"✗ ОШИБКА ПРИ ВЫПОЛНЕНИИ!")
@@ -264,7 +264,7 @@ def main():
         print()
         spark.stop()
         sys.exit(1)
-    
+
     finally:
         spark.stop()
 
