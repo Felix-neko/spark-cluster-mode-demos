@@ -36,6 +36,43 @@ get_app_final_status() {
         grep -oP '"finalStatus"\s*:\s*"[^"]+' | head -1 | grep -oP ':\s*"\K[^"]+'
 }
 
+# Функция для получения AM Container ID
+get_am_container() {
+    curl -s "http://quickstart-bigdata:8088/ws/v1/cluster/apps/$1/appattempts" 2>/dev/null | \
+        grep -oP '"containerId"\s*:\s*"container_[^"]+' | head -1 | grep -oP 'container_[^"]+'
+}
+
+# SSH для получения логов с кластера
+SSH_PASS="BaseUser@123"
+SSH_HOST="osboxes@quickstart-bigdata"
+SSH_CMD="sshpass -p $SSH_PASS ssh -o StrictHostKeyChecking=no $SSH_HOST"
+
+# Функция для получения логов драйвера через yarn logs (SSH)
+fetch_driver_logs() {
+    local app_id=$1
+    
+    echo ""
+    echo "=========================================="
+    echo "ЛОГИ ДРАЙВЕРА ($app_id)"
+    echo "=========================================="
+    
+    # Ждём агрегации логов (до 10 секунд)
+    for i in {1..5}; do
+        local logs=$($SSH_CMD "yarn logs -applicationId $app_id 2>/dev/null" 2>/dev/null)
+        if [ -n "$logs" ]; then
+            echo "$logs"
+            echo ""
+            echo "=========================================="
+            return 0
+        fi
+        sleep 2
+    done
+    
+    echo "[WARN] Не удалось получить логи для $app_id"
+    echo "=========================================="
+    return 1
+}
+
 # 0. Убиваем старый слушатель, если есть
 bash "$BASEDIR/kill_listener.sh" 2>/dev/null || true
 
@@ -66,8 +103,9 @@ spark-submit \
     --conf spark.yarn.maxAppAttempts=1 \
     --conf "spark.yarn.appMasterEnv.LOG_HOST=$LOG_HOST" \
     --conf "spark.yarn.appMasterEnv.LOG_PORT=$LOG_PORT" \
-    --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=./environment/bin/python \
-    --archives etl_repo.zip#etl_repo,venv_py37.zip#environment \
+    --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=./environment/bin/python3.7 \
+    --conf spark.yarn.appMasterEnv.LD_LIBRARY_PATH=./environment/lib \
+    --archives etl_repo.zip#etl_repo,venv_py37.tar.gz#environment \
     cluster_entrypoint.py 2>&1 | tee "$LOG_FILE"
 
 # Извлекаем Application ID
@@ -89,16 +127,18 @@ echo ""
 echo ">>> Ожидание логов от драйвера (таймаут: 120 сек)..."
 echo ""
 
+set +e  # Не выходим при ошибке wait
 wait $LISTENER_PID
 LISTENER_EXIT_CODE=$?
+set -e
 
 echo ""
 
 # 4. Проверяем статус приложения через YARN
 echo ">>> Проверка статуса приложения..."
 
-# Ждём финального статуса (может быть небольшая задержка)
-for i in {1..10}; do
+# Ждём финального статуса (может быть небольшая задержка после завершения listener)
+for i in {1..15}; do
     STATE=$(get_app_state "$APP_ID")
     FINAL_STATUS=$(get_app_final_status "$APP_ID")
     
@@ -117,8 +157,25 @@ echo "  Final Status: $FINAL_STATUS"
 echo "  Listener Exit Code: $LISTENER_EXIT_CODE"
 echo "=============================================="
 
+# Если listener упал (таймаут или ошибка) и приложение не успешно - получаем логи из YARN
+if [[ "$LISTENER_EXIT_CODE" != "0" ]] || [[ "$FINAL_STATUS" == "FAILED" ]]; then
+    echo ""
+    echo ">>> Получение логов драйвера из YARN..."
+    
+    # Ждём пока приложение точно завершится (для агрегации логов)
+    for i in {1..10}; do
+        STATE=$(get_app_state "$APP_ID")
+        if [[ "$STATE" == "FINISHED" || "$STATE" == "FAILED" || "$STATE" == "KILLED" ]]; then
+            break
+        fi
+        sleep 1
+    done
+    
+    fetch_driver_logs "$APP_ID"
+fi
+
 # Определяем итоговый код выхода
-if [[ "$FINAL_STATUS" == "SUCCEEDED" && "$LISTENER_EXIT_CODE" == "0" ]]; then
+if [[ "$FINAL_STATUS" == "SUCCEEDED" ]]; then
     echo ""
     echo "✓ Приложение успешно завершено!"
     exit 0

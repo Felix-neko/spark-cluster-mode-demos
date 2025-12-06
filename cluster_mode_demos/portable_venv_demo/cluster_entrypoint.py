@@ -122,7 +122,6 @@ def run_spark_job():
         except Exception as ex:
             print(ex)
 
-    
     print("\n" + "=" * 80)
     print("CREATING SPARK SESSION")
     print("=" * 80)
